@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<head>
+ <style type="text/css">
+ /* Definição de estilos para toda a tabela*/
+
+.tabela {
+     border: 1px solid green;
+}
+
+/* Definição de estilos para linha de cabeçalho da tabela*/
+
+.cabecalho {
+   text-align: center;
+   font: 11px Arial, sans-serif;
+   font-weight: bold;
+   color: Snow;
+   background:  #cfcfcf;
+}
+
+/* Definição de estilos para coluna */
+
+.primeiro {
+   text-align: center;
+   font: 11px Arial, sans-serif;
+   background: #ededed;
+}
+
+
+/* Definição de estilos para coluna */
+.ultimo {
+   font: 11px Arial, sans-serif;
+   text-align: center;
+   background: #ffff;
+}
+ 
+ 
+ 
+ 
+ </style>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+  
+  
+  <h:form>
+    <h:panelGrid  columns="2">
+       <h:outputLabel value="Descrição" ></h:outputLabel>
+       <h:inputText size="80" value="#{bookmarkControler.bookmark.descricao}" ></h:inputText>
+       <h:outputLabel value="Link" ></h:outputLabel>
+       <h:inputText  size="80" value="#{bookmarkControler.bookmark.link}" ></h:inputText>
+       <h:commandButton value="Gravar" action="#{bookmarkControler.salvar}" ></h:commandButton>
+    </h:panelGrid>
+  </h:form>
+  
+  <br /><br/>
+  <hr/>
+  <!-- Tabela -->
+  <h:form>
+     <h:dataTable  var="book" value="#{bookmarkControler.bookmarks}"  width="80%"
+          styleClass="tabela"   headerClass="cabecalho"  rowClasses="ultimo,primeiro" >
+        <h:column>
+          <!-- cabecalho -->
+          <f:facet name="header">
+             <h:outputText value="Descrição"></h:outputText>
+          </f:facet>
+          <!-- valor -->
+          <h:outputText value="#{book.descricao}" ></h:outputText>
+        </h:column>
+     
+        <h:column>
+                  <!-- cabecalho -->
+          <f:facet name="header">
+             <h:outputText value="Link"></h:outputText>
+          </f:facet>
+          <!-- valor -->
+          <h:outputText value="#{book.link}" ></h:outputText>
+        </h:column>
+     
+        <h:column>
+                    <!-- cabecalho -->
+          <f:facet name="header">
+             <h:outputText value="Opção"></h:outputText>
+          </f:facet>
+          <!-- valor -->
+          <h:panelGroup>
+            <h:commandLink value="Editar" action="#{bookmarkControler.mostraFormEditar}" ></h:commandLink>
+            |
+            <h:commandLink value="Excluir" action="#{bookmarkControler.excluir}" ></h:commandLink>
+          </h:panelGroup>
+          
+        </h:column>
+     
+     </h:dataTable>   
+  
+  </h:form>
+
+  
+  
+</body>
+
+</html>
