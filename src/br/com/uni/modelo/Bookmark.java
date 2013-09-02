@@ -4,9 +4,9 @@ import java.io.Serializable;
 
 public class Bookmark  implements Serializable{
    
-	 private static int COUNT;
+	 public static int COUNT = 1;
 	 
-	 private int id = 1;
+	 private int id;
 	 
 	 private String descricao;
 	 
@@ -14,7 +14,7 @@ public class Bookmark  implements Serializable{
 	 
 	 //construtor
 	 public Bookmark() {
-		 id = Bookmark.COUNT++;
+		 
 	 }
 
 	 public Bookmark(int id, String descricao, String link){
@@ -24,7 +24,6 @@ public class Bookmark  implements Serializable{
 	 }
 	 
 	 public Bookmark(String descricao, String link){
-		 id = Bookmark.COUNT++;
 		 this.descricao = descricao;
 		 this.link = link;
 	 }
@@ -43,8 +42,8 @@ public class Bookmark  implements Serializable{
 		return id;
 	}
 	 
-	public int setId(int id){
-		return id;
+	public void setId(int id){
+		this.id =  id;
 	}
 
 	public void setDescricao(String descricao) {
@@ -55,7 +54,10 @@ public class Bookmark  implements Serializable{
 		this.link = link;
 	}
 
-	 
+	 public static int incrementId(){
+		 Bookmark.COUNT = Bookmark.COUNT++;
+		 return Bookmark.COUNT;
+	 }
 	 
 	
 }

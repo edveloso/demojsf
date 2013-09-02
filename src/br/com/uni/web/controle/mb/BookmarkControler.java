@@ -1,45 +1,50 @@
 package br.com.uni.web.controle.mb;
 
-import java.util.List;
-
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
 import br.com.uni.modelo.Bookmark;
 import br.com.uni.modelo.persistencia.BookmarkDAO;
 
-@SessionScoped
+@RequestScoped
 @ManagedBean
 public class BookmarkControler {
-  
-	//campos do formularios
+
+	// campos do formularios
 	private Bookmark bookmark = new Bookmark();
-	
+
 	private DataModel<Bookmark> bookmarks = new ListDataModel<Bookmark>();
-	
+
 	private BookmarkDAO dao = new BookmarkDAO();
-	
-	//açoes da página
-	public String salvar(){  
+
+	// açoes da página
+	public String salvar() {
 		dao.salvar(bookmark);
 		bookmark = new Bookmark();
-		return "list"; 
-	}
-	
-	public String mostraFormEditar(){ return "";}
-	
-	public String gravaEdicao(){ return ""; }
-	
-	public String excluir(){
-		bookmark = bookmarks.getRowData();
-		dao.excluir(bookmark.getId());
-		return "list"; 
+		return "list";
 	}
 
-	
-	//gets e sets. afinal isso é um bean! rsrsrsrs
+	public String mostraFormEditar() {
+		bookmark = bookmarks.getRowData();
+		return "edit";
+	}
+
+	public String gravaEdicao() {
+		dao.editar(bookmark);
+		bookmark = new Bookmark();
+		return "list";
+	}
+
+	public String excluir() {
+		bookmark = bookmarks.getRowData();
+		dao.excluir(bookmark.getId());
+		bookmark = new Bookmark();
+		return "list";
+	}
+
+	// gets e sets. afinal isso é um bean!
 	public Bookmark getBookmark() {
 		return bookmark;
 	}
@@ -56,11 +61,5 @@ public class BookmarkControler {
 	public void setBookmarks(DataModel<Bookmark> bookmarks) {
 		this.bookmarks = bookmarks;
 	}
-	
-	
-	
-	
+
 }
-
-
-

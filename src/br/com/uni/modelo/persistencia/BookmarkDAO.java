@@ -10,6 +10,7 @@ public class BookmarkDAO {
 	private static List<Bookmark> LISTA = new ArrayList<Bookmark>();
 
 	public void salvar(Bookmark bookmark) {
+		bookmark.setId(Bookmark.incrementId());
 		LISTA.add(bookmark);
 	}
 
@@ -36,7 +37,6 @@ public class BookmarkDAO {
 		}
 		LISTA.clear();
 		LISTA.addAll(_lista);
-		System.out.println("done");
 
 	}
 
@@ -50,7 +50,6 @@ public class BookmarkDAO {
 		}
 		LISTA.clear();
 		LISTA.addAll(_lista);
-		System.out.println("done");
 	}
 
 }
