@@ -73,6 +73,15 @@
   <h:form>
      <h:dataTable  var="book" value="#{bookmarkControler.bookmarks}"  width="80%"
           styleClass="tabela"   headerClass="cabecalho"  rowClasses="ultimo,primeiro" >
+          
+        <h:column>
+          <!-- cabecalho -->
+          <f:facet name="header">
+             <h:outputText value="ID"></h:outputText>
+          </f:facet>
+          <!-- valor -->
+          <h:outputText value="#{book.id}" ></h:outputText>
+        </h:column>
         <h:column>
           <!-- cabecalho -->
           <f:facet name="header">
@@ -98,6 +107,7 @@
           </f:facet>
           <!-- valor -->
           <h:panelGroup>
+             
             <h:commandLink value="Editar" action="#{bookmarkControler.mostraFormEditar}" ></h:commandLink>
             |
             <h:commandLink value="Excluir" action="#{bookmarkControler.excluir}" ></h:commandLink>

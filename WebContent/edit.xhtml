@@ -1,73 +1,70 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 <head>
- <style type="text/css">
- /* Definição de estilos para toda a tabela*/
-
+<style type="text/css">
+/* Definição de estilos para toda a tabela*/
 .tabela {
-     border: 1px solid green;
+	border: 1px solid green;
 }
 
 /* Definição de estilos para linha de cabeçalho da tabela*/
-
 .cabecalho {
-   text-align: center;
-   font: 11px Arial, sans-serif;
-   font-weight: bold;
-   color: Snow;
-   background:  #cfcfcf;
+	text-align: center;
+	font: 11px Arial, sans-serif;
+	font-weight: bold;
+	color: Snow;
+	background: #cfcfcf;
 }
 
 /* Definição de estilos para coluna */
-
 .primeiro {
-   text-align: center;
-   font: 11px Arial, sans-serif;
-   background: #ededed;
+	text-align: center;
+	font: 11px Arial, sans-serif;
+	background: #ededed;
 }
-
 
 /* Definição de estilos para coluna */
 .ultimo {
-   font: 11px Arial, sans-serif;
-   text-align: center;
-   background: #ffff;
+	font: 11px Arial, sans-serif;
+	text-align: center;
+	background: #ffff;
 }
- 
- 
- 
- 
- </style>
+</style>
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
 </head>
 <body>
-  
-  
-  <h:form prependId="f" >
-     <h:messages />
-    <h:panelGrid  columns="2">
-       <h:outputLabel for="descricao" value="Descrição" ></h:outputLabel>
-       <h:inputText id="descricao" size="80" value="#{bookmarkControler.bookmark.descricao}" 
-           required="true" requiredMessage="Deu ruim na descrição! Preenche aí!"
-       >
-         <f:validateLength minimum="2" ></f:validateLength>
-       </h:inputText>
-       
-       <h:outputLabel for="link" value="Link" ></h:outputLabel>
 
-       <h:inputText id="link" size="80" value="#{bookmarkControler.bookmark.link}" 
-          required="true"
-       ></h:inputText>
-       <h:commandButton value="Gravar" action="#{bookmarkControler.gravaEdicao}" ></h:commandButton>
-    </h:panelGrid>
-  </h:form>
-    
-  
+
+	<h:form prependId="f">
+		<h:messages />
+		<h:panelGrid columns="2">
+
+			<h:panelGroup>
+				<h:inputHidden value="#{bookmarkControler.bookmark.id}"></h:inputHidden>
+				<h:outputLabel for="descricao" value="Descrição"></h:outputLabel>
+			</h:panelGroup>
+			
+			<h:inputText id="descricao" size="80"
+				value="#{bookmarkControler.bookmark.descricao}" required="true"
+				requiredMessage="Deu ruim na descrição! Preenche aí!">
+				<f:validateLength minimum="2"></f:validateLength>
+			</h:inputText>
+
+			<h:outputLabel for="link" value="Link"></h:outputLabel>
+
+			<h:inputText id="link" size="80"
+				value="#{bookmarkControler.bookmark.link}" required="true"></h:inputText>
+			<h:commandButton value="Gravar"
+				action="#{bookmarkControler.gravaEdicao}"></h:commandButton>
+		</h:panelGrid>
+	</h:form>
+
+
 </body>
 
 </html>

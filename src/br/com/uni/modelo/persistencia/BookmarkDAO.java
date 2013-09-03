@@ -7,10 +7,12 @@ import br.com.uni.modelo.Bookmark;
 
 public class BookmarkDAO {
 
+	private static int CONT = 1;
+	
 	private static List<Bookmark> LISTA = new ArrayList<Bookmark>();
 
 	public void salvar(Bookmark bookmark) {
-		bookmark.setId(Bookmark.incrementId());
+		bookmark.setId(CONT++);
 		LISTA.add(bookmark);
 	}
 

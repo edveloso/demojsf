@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 public class Bookmark  implements Serializable{
    
-	 public static int COUNT = 1;
-	 
 	 private int id;
 	 
 	 private String descricao;
@@ -54,10 +52,5 @@ public class Bookmark  implements Serializable{
 		this.link = link;
 	}
 
-	 public static int incrementId(){
-		 Bookmark.COUNT = Bookmark.COUNT++;
-		 return Bookmark.COUNT;
-	 }
-	 
 	
 }
