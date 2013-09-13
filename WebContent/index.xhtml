@@ -9,14 +9,26 @@
 </head>
 <body>
 
-	<h:outputText value="Hello world of jsf! I am alive!"></h:outputText>
+	<f:view locale="#{i18N.locale}">
 
-	<h:form>
-		<h:commandLink value="Mostra lista" action="list"></h:commandLink>
+		<h:form>
+			<h:commandLink value="Inglês" action="#{i18N.changLang('en')}" />
+      | 
+      <h:commandLink value="Portugues"
+				action="#{i18N.changLang('pt_BR')}" />
 
-	</h:form>
+		</h:form>
+		<br />
 
 
+		<h:outputText value="#{msg.bemvindo}"></h:outputText>
+
+		<h:form>
+			<h:commandLink value="Mostra lista" action="list"></h:commandLink>
+
+		</h:form>
+
+ </f:view>
 
 </body>
 </html>

@@ -46,24 +46,35 @@
 <title>Insert title here</title>
 </head>
 <body>
-  
+
+   <f:view locale="#{i18N.locale}">
+
+    <h:form>
+      <h:commandLink value="Inglês" action="#{i18N.changLang('en')}" />
+      | 
+      <h:commandLink value="Portugues" action="#{i18N.changLang('pt_BR')}" />
+    
+    </h:form>
+   <br/>
   
   <h:form prependId="f" >
      <h:messages />
     <h:panelGrid  columns="2">
-       <h:outputLabel for="descricao" value="Descrição" ></h:outputLabel>
+       <h:outputLabel for="link" value="#{msg.descricao}" ></h:outputLabel>
        <h:inputText id="descricao" size="80" value="#{bookmarkControler.bookmark.descricao}" 
            required="true" requiredMessage="Deu ruim na descrição! Preenche aí!"
        >
          <f:validateLength minimum="2" ></f:validateLength>
        </h:inputText>
        
-       <h:outputLabel for="link" value="Link" ></h:outputLabel>
+       <h:outputLabel for="link" value="#{msg.link}" ></h:outputLabel>
 
        <h:inputText id="link" size="80" value="#{bookmarkControler.bookmark.link}" 
           required="true"
        ></h:inputText>
-       <h:commandButton value="Gravar" action="#{bookmarkControler.salvar}" ></h:commandButton>
+       
+       
+       <h:commandButton value="#{msg['botao.gravar']}" action="#{bookmarkControler.salvar}" ></h:commandButton>
     </h:panelGrid>
   </h:form>
   
@@ -77,24 +88,32 @@
         <h:column>
           <!-- cabecalho -->
           <f:facet name="header">
-             <h:outputText value="ID"></h:outputText>
+             <h:outputText value="#{msg.id}"></h:outputText>
           </f:facet>
           <!-- valor -->
           <h:outputText value="#{book.id}" ></h:outputText>
         </h:column>
+        
+        
         <h:column>
           <!-- cabecalho -->
           <f:facet name="header">
-             <h:outputText value="Descrição"></h:outputText>
+             <h:outputText value="#{msg.descricao}"></h:outputText>
           </f:facet>
           <!-- valor -->
           <h:outputText value="#{book.descricao}" ></h:outputText>
+          
+          
         </h:column>
+     
+     
+     
+     
      
         <h:column>
                   <!-- cabecalho -->
           <f:facet name="header">
-             <h:outputText value="Link"></h:outputText>
+             <h:outputText value="#{msg.link}"></h:outputText>
           </f:facet>
           <!-- valor -->
           <h:outputText value="#{book.link}" ></h:outputText>
@@ -103,7 +122,7 @@
         <h:column>
                     <!-- cabecalho -->
           <f:facet name="header">
-             <h:outputText value="Opção"></h:outputText>
+             <h:outputText value="#{msg.opcao}"></h:outputText>
           </f:facet>
           <!-- valor -->
           <h:panelGroup>
@@ -119,8 +138,7 @@
   
   </h:form>
 
-  
-  
+  </f:view>
 </body>
 
 </html>

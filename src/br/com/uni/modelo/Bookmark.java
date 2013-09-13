@@ -10,6 +10,7 @@ public class Bookmark  implements Serializable{
 	 
 	 private String link;
 	 
+	 
 	 //construtor
 	 public Bookmark() {
 		 
@@ -51,6 +52,7 @@ public class Bookmark  implements Serializable{
 	public void setLink(String link) {
 		this.link = link;
 	}
+
 
 	
 }

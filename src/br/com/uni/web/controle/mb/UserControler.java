@@ -1,9 +1,13 @@
 package br.com.uni.web.controle.mb;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 import javax.faces.validator.ValidatorException;
 
 import br.com.uni.modelo.User;
@@ -12,6 +16,8 @@ import br.com.uni.modelo.User;
 public class UserControler {
 
 	private User user = new User();
+	
+	private List<SelectItem> listaSexo;
 	
 	public void validateEmail(FacesContext context, UIComponent toValidate,
 			Object value) throws ValidatorException {
@@ -45,5 +51,21 @@ public class UserControler {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	
+	
+	
+	public List<SelectItem> getListaSexo() {
+		
+		listaSexo = new ArrayList<SelectItem>();
+		listaSexo.add(new SelectItem("M", "Masculino"));
+		listaSexo.add(new SelectItem("F", "Feminino"));
+		
+		return listaSexo;
+	}
+
+	public void setListaSexo(List<SelectItem> listaSexo) {
+		this.listaSexo = listaSexo;
 	}
 }

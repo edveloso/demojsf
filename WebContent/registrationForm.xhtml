@@ -4,68 +4,86 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-	<title>A Simple JavaServer Faces Registration Application</title>
+	<title>A Simple JavaServer Faces Registration Application2</title>
 </h:head>
 <h:body>
+
+	<p>
+	</p>
 	<h:form>
-		<h2>JSF Registration App</h2>
-		<h4>Registration Form</h4>
-		<table>
-			<tr>
-				<td>First Name:</td>
-				<td><h:inputText label="First Name" id="fname"
-						value="#{userBean.user.firstName}" required="true" />
-						
-						 <h:message
-						for="fname" /></td>
-			</tr>
-			<tr>
-				<td>Last Name:</td>
-				<td><h:inputText label="Last Name" id="lname"
-						value="#{userBean.user.lastName}" required="true" /> <h:message
-						for="lname" /></td>
-			</tr>
-			<tr>
-				<td>Sex:</td>
-				<td><h:selectOneRadio label="Sex" id="sex" layout="pageDirection"
-						value="#{userBean.user.sex}" required="true">
-						<f:selectItem itemLabel="Male" itemValue="male" />
-						<f:selectItem itemLabel="Female" itemValue="female" />
-					</h:selectOneRadio> <h:message for="sex" /></td>
-			</tr>
-			<tr>
-				<td>Date of Birth:</td>
-				<td><h:inputText label="Date of Birth" id="dob"
-						value="#{userBean.user.dob}" required="true">
-						<f:convertDateTime pattern="MM-dd-yy" />
-					</h:inputText>
-					 (mm-dd-yy) 
-					 <h:message for="dob" />
-					</td>
-			</tr>
-			<tr>
-				<td>Email Address:</td>
-				<td><h:inputText label="Email Address" id="email"
-						value="#{userBean.user.email}" required="true"
-						validator="#{userBean.user.validateEmail}" /> <h:message for="email" />
-				</td>
-			</tr>
-			<tr>
-				<td>Service Level:</td>
-				<td><h:selectOneMenu label="Service Level"
-						value="#{userBean.user.serviceLevel}">
-						<f:selectItem itemLabel="Medium" itemValue="medium" />
-						<f:selectItem itemLabel="Basic" itemValue="basic" />
-						<f:selectItem itemLabel="Premium" itemValue="premium" />
-					</h:selectOneMenu></td>
-			</tr>
-		</table>
-		<p>
-			<h:messages />
-		</p>
-		<p>
-			<h:commandButton value="Register" action="confirm" />
-		</p>
+
+
+		<h2>
+			<h:outputText value="JSF Registration App" />
+		</h2>
+		<h4>
+			<h:outputText value="Registration Form"></h:outputText>
+		</h4>
+
+		<h:panelGrid columns="3">
+			<h:outputLabel value="First Name:" for="fname" />
+
+			<h:inputText label="First Name" id="fname"
+				value="#{userBean.user.firstName}" required="true" 
+				requiredMessage="Num pode dexá de digitá!" validatorMessage="Seu animar, tém que colocá mardetrei!" >
+				  <f:validateLength  minimum="3" />
+				</h:inputText>
+
+			<h:message for="fname" />
+
+			<h:outputLabel value="Last Name:" for="lname" />
+
+			<h:inputText label="Last Name" id="lname"
+				value="#{userBean.user.lastName}" required="true" />
+			
+			<h:message for="lname" />
+
+			<h:outputLabel value="Sex:" for="sex" />
+
+			<h:selectOneRadio label="Sex" id="sex" layout="pageDirection"
+				value="#{userBean.user.sex}" required="true">
+				<f:selectItem itemLabel="Masculino"  itemValue="M"  />
+				<f:selectItem itemLabel="Feminino"  itemValue="F"  />
+			</h:selectOneRadio>
+			
+			<h:message for="sex" />
+
+			<h:outputLabel value="Date of Birth:" />
+
+			<h:inputText label="Date of Birth" id="dob"
+				value="#{userBean.user.dob}" required="true">
+				
+				<f:convertDateTime pattern="MM-dd-yy" />
+				
+			</h:inputText>
+			
+			<h:message for="dob" />
+
+			<h:outputLabel value="Email Address:" for="email" />
+
+
+			<h:inputText label="Email Address" id="email"
+				value="#{userBean.user.email}" required="true"
+				validator="#{userBean.validateEmail}" />
+				
+			<h:message for="email" />
+			
+			
+			<h:outputLabel value="Service Level:"  for="serv" ></h:outputLabel>
+			
+			<h:selectOneMenu id="serv"
+				value="#{userBean.user.serviceLevel}">
+				<f:selectItem itemLabel="Medium" itemValue="medium" />
+				<f:selectItem itemLabel="Basic" itemValue="basic" />
+				<f:selectItem itemLabel="Premium" itemValue="premium" />
+			</h:selectOneMenu>
+
+    			<h:message for="serv"/>
+		
+			<h:commandButton value="Register" />
+
+		</h:panelGrid>
+
 	</h:form>
 </h:body>
 </html>
